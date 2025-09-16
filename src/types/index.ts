@@ -6,6 +6,8 @@ export interface Challenge {
   tags: string[];
   image: string;
   buttonText: string;
+  status: 'active' | 'completed' | 'upcoming';
+  isDisabled?: boolean;
 }
 
 export interface Sweepstake {

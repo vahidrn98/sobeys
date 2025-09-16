@@ -1,67 +1,130 @@
 import React from 'react';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
-import { Colors } from '../constants/colors';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Colors, Fonts } from '../constants/colors';
+import { StatsCard } from '../components/StatsCard';
 import { OverviewScreen } from '../screens/OverviewScreen';
 import { ChallengesScreen } from '../screens/ChallengesScreen';
 import { SweepstakesScreen } from '../screens/SweepstakesScreen';
+import { DashboardScreen } from '../screens/DashboardScreen';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 export const AppNavigator: React.FC = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName: keyof typeof Ionicons.glyphMap;
+    <SafeAreaView style={styles.container}>
 
-            if (route.name === 'Overview') {
-              iconName = focused ? 'home' : 'home-outline';
-            } else if (route.name === 'Challenges') {
-              iconName = focused ? 'trophy' : 'trophy-outline';
-            } else if (route.name === 'Sweepstakes') {
-              iconName = focused ? 'gift' : 'gift-outline';
-            } else {
-              iconName = 'help-outline';
-            }
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Grocery Giveaways</Text>
+      </View>
+      
+      {/* Stats Cards */}
+      <View style={styles.statsContainer}>
+        <StatsCard 
+          icon="coins"
+          title="Chips Balance" 
+          value="1,000" 
+        />
+        <StatsCard 
+          icon="check-circle" 
+          title="Challenges Completed" 
+          value="10" 
+        />
+        <StatsCard 
+          icon="gift" 
+          title="My Rewards" 
+          value="" 
+        />
+      </View>
 
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: Colors.primary,
-          tabBarInactiveTintColor: Colors.textSecondary,
-          tabBarStyle: {
-            backgroundColor: Colors.background,
-            borderTopColor: Colors.border,
-            paddingBottom: 5,
-            paddingTop: 5,
-            height: 60,
-          },
-          headerStyle: {
-            backgroundColor: Colors.primary,
-          },
-          headerTintColor: Colors.textLight,
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            fontSize: 18,
-          },
-        })}
-      >
-        <Tab.Screen 
-          name="Overview" 
-          component={OverviewScreen}
-          options={{ title: 'Grocery Giveaways' }}
-        />
-        <Tab.Screen 
-          name="Challenges" 
-          component={ChallengesScreen}
-        />
-        <Tab.Screen 
-          name="Sweepstakes" 
-          component={SweepstakesScreen}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{
+            tabBarActiveTintColor: Colors.primary,
+            tabBarInactiveTintColor: Colors.textSecondary,
+            tabBarStyle: {
+              backgroundColor: Colors.background,
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 1,
+              borderBottomColor: Colors.border,
+            },
+            tabBarIndicatorStyle: {
+              backgroundColor: Colors.primary,
+              height: 3,
+            },
+            tabBarLabelStyle: {
+              fontSize: 16,
+              fontFamily: Fonts.medium,
+              textTransform: 'none',
+            },
+            tabBarScrollEnabled: true,
+            tabBarItemStyle: {
+              width: 140,
+              paddingHorizontal: 0,
+            },
+            tabBarContentContainerStyle: {
+              paddingHorizontal: 16,
+            },
+          }}
+        >
+          <Tab.Screen 
+            name="Overview" 
+            component={OverviewScreen}
+            options={{ 
+              title: 'Overview'
+            }}
+          />
+          <Tab.Screen 
+            name="Challenges" 
+            component={ChallengesScreen}
+            options={{ 
+              title: 'Challenges'
+            }}
+          />
+          <Tab.Screen 
+            name="Sweepstakes" 
+            component={SweepstakesScreen}
+            options={{ 
+              title: 'Sweepstakes'
+            }}
+          />
+          <Tab.Screen 
+            name="Dashboard" 
+            component={DashboardScreen}
+            options={{ 
+              title: 'Dashboard'
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.primary,
+  },
+  header: {
+    backgroundColor: Colors.primary,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontFamily: Fonts.titleBold,
+    color: Colors.textLight,
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    gap: 8,
+    backgroundColor: Colors.background,
+  },
+});

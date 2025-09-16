@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Colors } from '../constants/colors';
+import { Colors, Fonts } from '../constants/colors';
 import { Sweepstake } from '../types';
 
 interface SweepstakeCardProps {
@@ -13,7 +13,7 @@ export const SweepstakeCard: React.FC<SweepstakeCardProps> = ({ sweepstake, onPr
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image 
-          source={{ uri: sweepstake.image }} 
+          source={require('../assets/Sweep.png')} 
           style={styles.image}
           resizeMode="cover"
         />
@@ -33,10 +33,18 @@ export const SweepstakeCard: React.FC<SweepstakeCardProps> = ({ sweepstake, onPr
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.cardBackground,
+    backgroundColor: Colors.background,
     borderRadius: 12,
     marginVertical: 8,
     overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 1,
   },
   imageContainer: {
     height: 150,
@@ -51,26 +59,28 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: Fonts.titleBold,
     color: Colors.text,
     marginBottom: 8,
   },
   description: {
     fontSize: 14,
+    fontFamily: Fonts.regular,
     color: Colors.textSecondary,
     lineHeight: 20,
     marginBottom: 16,
   },
   button: {
     backgroundColor: Colors.primary,
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 24,
-    borderRadius: 8,
+    borderRadius: 24,
     alignItems: 'center',
+    alignSelf: 'flex-start',
   },
   buttonText: {
     color: Colors.textLight,
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: Fonts.regular,
   },
 });

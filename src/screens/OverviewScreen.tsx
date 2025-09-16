@@ -1,28 +1,47 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StatsCard } from '../components/StatsCard';
 import { ChallengeCard } from '../components/ChallengeCard';
 import { SweepstakeCard } from '../components/SweepstakeCard';
-import { Colors } from '../constants/colors';
+import { Colors, Fonts } from '../constants/colors';
 import { Challenge, Sweepstake } from '../types';
 
 // Mock data - in a real app, this would come from an API
-const mockChallenge: Challenge = {
-  id: '1',
-  title: 'Open the mobile app weekly',
-  description: 'Open the app at least once per week until April 30th, 2025, to earn 2 chips each week.',
-  reward: 5,
-  tags: ['5', 'voila', 'Free Product Offer'],
-  image: 'https://via.placeholder.com/300x150/F5F5F5/666666?text=Mobile+App+Challenge',
-  buttonText: 'Start Challenge',
-};
+const mockChallenges: Challenge[] = [
+  {
+    id: '1',
+    title: 'Open the mobile app weekly',
+    description: 'Open the app at least once per week until April 30th, 2025, to earn 2 chips each week.',
+    reward: 5,
+    tags: ['5', 'voila', 'Free Product Offer'],
+    image: '../assets/challenge.png',
+    buttonText: 'Start Challenge',
+  },
+  {
+    id: '2',
+    title: 'Complete your profile',
+    description: 'Fill out your profile information to earn 3 chips and unlock exclusive offers.',
+    reward: 3,
+    tags: ['3', 'voila', 'Profile'],
+    image: '../assets/challenge.png',
+    buttonText: 'Complete Now',
+  },
+  {
+    id: '3',
+    title: 'Share with friends',
+    description: 'Invite friends to join the app and earn 10 chips for each successful referral.',
+    reward: 10,
+    tags: ['10', 'voila', 'Referral'],
+    image: '../assets/challenge.png',
+    buttonText: 'Share Now',
+  },
+];
 
 const mockSweepstake: Sweepstake = {
   id: '1',
   title: 'Sweepstake Title #1',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  image: 'https://via.placeholder.com/300x150/1A1A1A/FF69B4?text=FPO',
+  image: '../assets/Sweep.png',
   buttonText: 'Enter Sweepstake',
 };
 
@@ -46,25 +65,6 @@ export const OverviewScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {/* Stats Cards */}
-        <View style={styles.statsContainer}>
-          <StatsCard 
-            icon="logo-bitcoin" 
-            title="Chips Balance" 
-            value="1,000" 
-          />
-          <StatsCard 
-            icon="checkmark-circle" 
-            title="Challenges Completed" 
-            value="10" 
-          />
-          <StatsCard 
-            icon="gift" 
-            title="My Rewards" 
-            value="" 
-          />
-        </View>
-
         {/* Latest Challenges Section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
@@ -76,10 +76,21 @@ export const OverviewScreen: React.FC = () => {
           <Text style={styles.sectionDescription}>
             Complete weekly challenges, answer trivia, and check back for more chances to win.
           </Text>
-          <ChallengeCard 
-            challenge={mockChallenge} 
-            onPress={handleChallengePress}
-          />
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.challengesScrollContainer}
+            style={styles.challengesScrollView}
+          >
+            {mockChallenges.map((challenge) => (
+              <View key={challenge.id} style={styles.challengeCardContainer}>
+                <ChallengeCard 
+                  challenge={challenge} 
+                  onPress={handleChallengePress}
+                />
+              </View>
+            ))}
+          </ScrollView>
         </View>
 
         {/* Sweepstakes Section */}
@@ -111,15 +122,10 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
   },
-  statsContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    paddingVertical: 20,
-    gap: 8,
-  },
   section: {
     paddingHorizontal: 16,
-    marginBottom: 24,
+    paddingTop: 24,
+    // marginBottom: 24,
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -129,18 +135,30 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: Fonts.titleBold,
     color: Colors.text,
   },
   viewAllText: {
     fontSize: 16,
     color: Colors.primary,
-    fontWeight: '500',
+    fontFamily: Fonts.bold,
   },
   sectionDescription: {
     fontSize: 14,
+    fontFamily: Fonts.regular,
     color: Colors.textSecondary,
     marginBottom: 16,
     lineHeight: 20,
+  },
+  challengesScrollView: {
+    marginHorizontal: -16,
+  },
+  challengesScrollContainer: {
+    paddingHorizontal: 16,
+    gap: 16,
+  },
+  challengeCardContainer: {
+    width: 350,
+    paddingBottom: 16,
   },
 });

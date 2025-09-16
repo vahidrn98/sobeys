@@ -1,17 +1,149 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Colors } from '../constants/colors';
+import { Colors, Fonts } from '../constants/colors';
+import { ChallengeCard } from '../components/ChallengeCard';
+import { Challenge } from '../types';
 
 export const ChallengesScreen: React.FC = () => {
+  // Sample challenge data matching the image
+  const challenges: Challenge[] = [
+    {
+      id: '1',
+      title: 'Redeem Any Offer In Store',
+      description: 'Earn 5 chips for redeeming any personalized or digital offer in store. It doesn\'t get any better than that.',
+      reward: 5,
+      tags: ['5', 'Free Product Offer'],
+      image: 'challenge.png',
+      buttonText: 'Start Challenge',
+      status: 'active',
+    },
+    {
+      id: '2',
+      title: 'Lorem Contest Title',
+      description: 'get up to 10 chips when you complete the trivia set.',
+      reward: 10,
+      tags: ['10', 'Free Product Offer'],
+      image: 'challenge.png',
+      buttonText: 'Check Back Next Week',
+      status: 'completed',
+    },
+    {
+      id: '3',
+      title: 'Complete Our Own Brand Trivia for this Week',
+      description: 'get up to 10 chips when you complete the trivia set.',
+      reward: 5,
+      tags: ['5', 'Free Product Offer'],
+      image: 'challenge.png',
+      buttonText: 'Check Back Next Week',
+      status: 'upcoming',
+    },
+  ];
+
+  const handleChallengePress = (challengeId: string) => {
+    console.log('Challenge pressed:', challengeId);
+  };
+
+  const handleViewAllChallenges = () => {
+    console.log('View all challenges');
+  };
+
+  const handleViewCompleted = () => {
+    console.log('View completed challenges pressed');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.content}>
-          <Text style={styles.title}>Challenges</Text>
-          <Text style={styles.description}>
-            Complete challenges to earn chips and rewards!
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        {/* Weekly Challenges Section */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Weekly Challenges</Text>
+            
+          </View>
+          <Text style={styles.sectionDescription}>
+            Complete challenges to earn chips and rewards! Complete weekly challenges, answer trivia, and check back for more chances to win.
           </Text>
+          
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.challengesScrollContainer}
+            style={styles.challengesScrollView}
+          >
+            {challenges.map((challenge) => (
+              <View key={challenge.id} style={styles.challengeCardWrapper}>
+                <ChallengeCard
+                  challenge={challenge}
+                  onPress={() => handleChallengePress(challenge.id)}
+                />
+              </View>
+            ))}
+          </ScrollView>
+          
+        </View>
+        
+        {/* Trivia Challenges Section */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Trivia Challenges</Text>
+            
+          </View>
+          <Text style={styles.sectionDescription}>
+            Complete challenges to earn chips and rewards! Complete weekly challenges, answer trivia, and check back for more chances to win.
+          </Text>
+          
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.challengesScrollContainer}
+            style={styles.challengesScrollView}
+          >
+            {challenges.map((challenge) => (
+              <View key={challenge.id} style={styles.challengeCardWrapper}>
+                <ChallengeCard
+                  challenge={challenge}
+                  onPress={() => handleChallengePress(challenge.id)}
+                />
+              </View>
+            ))}
+          </ScrollView>
+          
+          
+        </View>
+        {/* Upcoming Challenges Section */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Upcoming Challenges</Text>
+            
+          </View>
+          <Text style={styles.sectionDescription}>
+            Complete challenges to earn chips and rewards! Complete weekly challenges, answer trivia, and check back for more chances to win.
+          </Text>
+          
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.challengesScrollContainer}
+            style={styles.challengesScrollView}
+          >
+            {challenges.map((challenge) => (
+              <View key={challenge.id} style={styles.challengeCardWrapper}>
+                <ChallengeCard
+                  challenge={challenge}
+                  onPress={() => handleChallengePress(challenge.id)}
+                />
+              </View>
+            ))}
+          </ScrollView>
+          
+        </View>
+        
+        <View style={styles.bottomSection}>
+          <Text style={styles.bottomSectionText}>See all your completed challenges in one place.</Text>
+          <TouchableOpacity style={styles.bottomButton} onPress={handleViewCompleted}>
+            <Text style={styles.bottomButtonText}>View Completed Challenges</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -26,22 +158,66 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
   },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 20,
+  section: {
+    paddingHorizontal: 16,
+    paddingTop: 24,
   },
-  title: {
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  sectionTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: Fonts.titleBold,
     color: Colors.text,
+  },
+  viewAllText: {
+    fontSize: 16,
+    color: Colors.primary,
+    fontFamily: Fonts.bold,
+  },
+  sectionDescription: {
+    fontSize: 14,
+    fontFamily: Fonts.regular,
+    color: Colors.textSecondary,
+    marginBottom: 16,
+    lineHeight: 20,
+  },
+  challengesScrollView: {
+    marginHorizontal: -16,
+  },
+  challengesScrollContainer: {
+    paddingHorizontal: 16,
+    gap: 16,
+  },
+  challengeCardWrapper: {
+    width: 350,
+    paddingBottom: 16,
+  },
+  bottomSection: {
+    paddingHorizontal: 48,
+    paddingTop: 24,
+    paddingBottom: 20,
+  },
+  bottomSectionText: {
+    fontSize: 20,
+    fontFamily: Fonts.bold,
+    color: Colors.text,
+    textAlign: 'center',
     marginBottom: 16,
   },
-  description: {
+  bottomButton: {
+    backgroundColor: Colors.primary,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 24,
+    alignItems: 'center',
+  },
+  bottomButtonText: {
+    color: Colors.textLight,
     fontSize: 16,
-    color: Colors.textSecondary,
-    textAlign: 'center',
-    lineHeight: 24,
+    fontFamily: Fonts.regular,
   },
 });
