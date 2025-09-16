@@ -4,14 +4,6 @@ A modern React Native application built with TypeScript, showcasing a comprehens
 
 ## ✨ Features
 
-### 🎯 **Core Functionality**
-- **Interactive Challenges System** - Complete tasks to earn rewards
-- **Sweepstakes Integration** - Enter contests for exciting prizes
-- **Coupon Management** - Digital coupons with copy-to-clipboard functionality
-- **Rewards Dashboard** - Track your progress and earned rewards
-- **Scene+ Points Integration** - Loyalty program integration
-- **Free Products Tracking** - Monitor available free product offers
-
 ### 🏗️ **Technical Highlights**
 - **TypeScript-First Development** - Full type safety across the application
 - **Custom Hooks Architecture** - Reusable business logic with proper state management
@@ -32,8 +24,8 @@ A modern React Native application built with TypeScript, showcasing a comprehens
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd Sobeys-ass
+   git clone https://github.com/vahidrn98/sobeys
+   cd sobeys
    ```
 
 2. **Install dependencies**
@@ -130,12 +122,137 @@ src/
 ### **Performance Optimizations**
 
 #### 🚀 **Current Implementations**
-- **Font Loading Optimization** - Efficient font resource management with splash screen
+- **Font Loading Optimization** - Efficient font resource management with splash screen (prefetch)
 - **Image Optimization** - Proper image handling and caching strategies
 - **Memory Management** - Efficient component lifecycle management
 - **Bundle Optimization** - Tree-shaking and code splitting ready
 - **useCallback Optimization** - Memoized event handlers to prevent unnecessary re-renders
 - **Loading States** - Proper async state management with loading indicators
+
+
+## ♿ Accessibility Features
+
+### **🎯 WCAG 2.1 AA Compliance**
+This application is built with **inclusive design principles** and meets Web Content Accessibility Guidelines (WCAG) 2.1 AA standards, ensuring the app is usable by people with diverse abilities.
+
+### **📱 Screen Reader Support**
+- **VoiceOver (iOS)** - Full compatibility with Apple's screen reader
+- **TalkBack (Android)** - Complete support for Google's accessibility service
+- **Semantic Structure** - Proper heading hierarchy and content organization
+- **Descriptive Labels** - Clear, concise descriptions for all interactive elements
+
+### **🔧 Accessibility Implementation**
+
+#### **Component-Level Accessibility**
+- **`accessibilityRole`** - Defines semantic roles (button, text, header, alert)
+- **`accessibilityLabel`** - Provides descriptive text for screen readers
+- **`accessibilityHint`** - Offers guidance on element interaction
+- **`accessibilityState`** - Communicates current state (disabled, selected)
+
+#### **Interactive Elements**
+- **Challenge Cards** - Complete challenge information with status and rewards
+- **Coupon Management** - Clear coupon codes, validity, and usage instructions
+- **Statistics Display** - Accessible data presentation with proper labeling
+- **Navigation Controls** - Intuitive tab navigation with clear focus management
+
+#### **Error Handling**
+- **Error Boundary** - Accessible error messages with recovery options
+- **Alert Roles** - Critical information properly announced to screen readers
+- **Retry Mechanisms** - Clear instructions for error recovery
+
+### **🎨 Visual Accessibility**
+- **High Contrast Design** - Sufficient color contrast ratios for readability
+- **Consistent Typography** - Clear, readable fonts with appropriate sizing
+- **Touch Targets** - Minimum 44pt touch targets for easy interaction
+- **Visual Hierarchy** - Clear information structure and flow
+
+### **🧠 Cognitive Accessibility**
+- **Simple Language** - Clear, jargon-free interface text
+- **Consistent Navigation** - Predictable user interface patterns
+- **Error Prevention** - Clear validation and helpful error messages
+- **Progress Indication** - Visual feedback for loading and processing states
+
+### **⚡ Assistive Technology Features**
+
+#### **Voice Control Support**
+- **Element Identification** - All interactive elements properly labeled
+- **Command Recognition** - Compatible with voice control systems
+- **Focus Management** - Proper focus order and navigation
+
+#### **Switch Control Compatibility**
+- **Sequential Navigation** - Logical tab order for switch users
+- **Clear Focus Indicators** - Visible focus states for navigation
+- **Action Confirmation** - Clear feedback for user actions
+
+#### **Magnification Support**
+- **Scalable Text** - Dynamic type support for text scaling
+- **Responsive Layout** - Adapts to different zoom levels
+- **High-DPI Support** - Crisp rendering on high-resolution displays
+
+### **🔍 Accessibility Testing**
+- **Automated Testing** - ESLint accessibility rules enforcement
+- **Manual Testing** - Screen reader and assistive technology validation
+- **User Testing** - Validation with users who rely on assistive technologies
+- **Cross-Platform Testing** - iOS and Android accessibility verification
+
+### **📋 Accessibility Checklist**
+- ✅ **Screen Reader Compatible** - Full VoiceOver/TalkBack support
+- ✅ **Keyboard Navigation** - Complete keyboard accessibility
+- ✅ **Color Contrast** - WCAG AA compliant contrast ratios
+- ✅ **Touch Targets** - Minimum 44pt interactive areas
+- ✅ **Semantic HTML** - Proper ARIA roles and labels
+- ✅ **Focus Management** - Clear focus indicators and logical order
+- ✅ **Error Handling** - Accessible error messages and recovery
+- ✅ **Loading States** - Clear feedback for async operations
+
+### **🚀 Future Accessibility Enhancements**
+- **Haptic Feedback** - Tactile responses for user interactions
+- **Voice Commands** - Voice-activated navigation and actions
+- **Gesture Recognition** - Alternative input methods for motor impairments
+- **Customizable UI** - User-configurable interface elements
+
+## 🔧 Available Scripts
+
+```bash
+# Development
+npm start              # Start Expo development server
+npm run android        # Run on Android device/emulator
+npm run ios           # Run on iOS simulator
+npm run web           # Run in web browser
+
+# Code Quality
+npm run lint          # Run ESLint
+npm run lint:fix      # Fix ESLint issues
+npm run format        # Format code with Prettier
+npm run type-check    # Run TypeScript type checking
+
+# Testing
+npm test              # Run Jest tests
+npm run test:watch    # Run tests in watch mode
+```
+
+## 🎨 Design System
+
+### **Color Palette**
+- **Primary**: `#003D2A` (Dark Green) - Brand identity
+- **Secondary**: `#FFFFFF` (White) - Clean backgrounds
+- **Accent**: `#4A7C59` (Light Green) - Interactive elements
+- **Success**: `#4CAF50` - Positive actions
+- **Warning**: `#FF9800` - Attention required
+- **Error**: `#F44336` - Error states
+
+### **Typography**
+- **Poppins** - Body text and UI elements
+- **Montserrat** - Headings and titles
+- **Consistent Font Weights** - 400, 500, 600, 700
+
+### **Component Library**
+- **ChallengeCard** - Interactive challenge display
+- **CouponCard** - Digital coupon management
+- **StatsCard** - Progress and statistics display
+- **SweepstakeCard** - Contest entry interface
+- **ErrorBoundary** - Error handling component
+
 
 #### ⚡ **Potential Performance Improvements**
 
@@ -419,129 +536,6 @@ const usePerformance = () => {
 - **Error Recovery** - Clear error messages with retry options
 - **Accessibility Ready** - Screen reader compatible structure
 
-## ♿ Accessibility Features
-
-### **🎯 WCAG 2.1 AA Compliance**
-This application is built with **inclusive design principles** and meets Web Content Accessibility Guidelines (WCAG) 2.1 AA standards, ensuring the app is usable by people with diverse abilities.
-
-### **📱 Screen Reader Support**
-- **VoiceOver (iOS)** - Full compatibility with Apple's screen reader
-- **TalkBack (Android)** - Complete support for Google's accessibility service
-- **Semantic Structure** - Proper heading hierarchy and content organization
-- **Descriptive Labels** - Clear, concise descriptions for all interactive elements
-
-### **🔧 Accessibility Implementation**
-
-#### **Component-Level Accessibility**
-- **`accessibilityRole`** - Defines semantic roles (button, text, header, alert)
-- **`accessibilityLabel`** - Provides descriptive text for screen readers
-- **`accessibilityHint`** - Offers guidance on element interaction
-- **`accessibilityState`** - Communicates current state (disabled, selected)
-
-#### **Interactive Elements**
-- **Challenge Cards** - Complete challenge information with status and rewards
-- **Coupon Management** - Clear coupon codes, validity, and usage instructions
-- **Statistics Display** - Accessible data presentation with proper labeling
-- **Navigation Controls** - Intuitive tab navigation with clear focus management
-
-#### **Error Handling**
-- **Error Boundary** - Accessible error messages with recovery options
-- **Alert Roles** - Critical information properly announced to screen readers
-- **Retry Mechanisms** - Clear instructions for error recovery
-
-### **🎨 Visual Accessibility**
-- **High Contrast Design** - Sufficient color contrast ratios for readability
-- **Consistent Typography** - Clear, readable fonts with appropriate sizing
-- **Touch Targets** - Minimum 44pt touch targets for easy interaction
-- **Visual Hierarchy** - Clear information structure and flow
-
-### **🧠 Cognitive Accessibility**
-- **Simple Language** - Clear, jargon-free interface text
-- **Consistent Navigation** - Predictable user interface patterns
-- **Error Prevention** - Clear validation and helpful error messages
-- **Progress Indication** - Visual feedback for loading and processing states
-
-### **⚡ Assistive Technology Features**
-
-#### **Voice Control Support**
-- **Element Identification** - All interactive elements properly labeled
-- **Command Recognition** - Compatible with voice control systems
-- **Focus Management** - Proper focus order and navigation
-
-#### **Switch Control Compatibility**
-- **Sequential Navigation** - Logical tab order for switch users
-- **Clear Focus Indicators** - Visible focus states for navigation
-- **Action Confirmation** - Clear feedback for user actions
-
-#### **Magnification Support**
-- **Scalable Text** - Dynamic type support for text scaling
-- **Responsive Layout** - Adapts to different zoom levels
-- **High-DPI Support** - Crisp rendering on high-resolution displays
-
-### **🔍 Accessibility Testing**
-- **Automated Testing** - ESLint accessibility rules enforcement
-- **Manual Testing** - Screen reader and assistive technology validation
-- **User Testing** - Validation with users who rely on assistive technologies
-- **Cross-Platform Testing** - iOS and Android accessibility verification
-
-### **📋 Accessibility Checklist**
-- ✅ **Screen Reader Compatible** - Full VoiceOver/TalkBack support
-- ✅ **Keyboard Navigation** - Complete keyboard accessibility
-- ✅ **Color Contrast** - WCAG AA compliant contrast ratios
-- ✅ **Touch Targets** - Minimum 44pt interactive areas
-- ✅ **Semantic HTML** - Proper ARIA roles and labels
-- ✅ **Focus Management** - Clear focus indicators and logical order
-- ✅ **Error Handling** - Accessible error messages and recovery
-- ✅ **Loading States** - Clear feedback for async operations
-
-### **🚀 Future Accessibility Enhancements**
-- **Haptic Feedback** - Tactile responses for user interactions
-- **Voice Commands** - Voice-activated navigation and actions
-- **Gesture Recognition** - Alternative input methods for motor impairments
-- **Customizable UI** - User-configurable interface elements
-
-## 🔧 Available Scripts
-
-```bash
-# Development
-npm start              # Start Expo development server
-npm run android        # Run on Android device/emulator
-npm run ios           # Run on iOS simulator
-npm run web           # Run in web browser
-
-# Code Quality
-npm run lint          # Run ESLint
-npm run lint:fix      # Fix ESLint issues
-npm run format        # Format code with Prettier
-npm run type-check    # Run TypeScript type checking
-
-# Testing
-npm test              # Run Jest tests
-npm run test:watch    # Run tests in watch mode
-```
-
-## 🎨 Design System
-
-### **Color Palette**
-- **Primary**: `#003D2A` (Dark Green) - Brand identity
-- **Secondary**: `#FFFFFF` (White) - Clean backgrounds
-- **Accent**: `#4A7C59` (Light Green) - Interactive elements
-- **Success**: `#4CAF50` - Positive actions
-- **Warning**: `#FF9800` - Attention required
-- **Error**: `#F44336` - Error states
-
-### **Typography**
-- **Poppins** - Body text and UI elements
-- **Montserrat** - Headings and titles
-- **Consistent Font Weights** - 400, 500, 600, 700
-
-### **Component Library**
-- **ChallengeCard** - Interactive challenge display
-- **CouponCard** - Digital coupon management
-- **StatsCard** - Progress and statistics display
-- **SweepstakeCard** - Contest entry interface
-- **ErrorBoundary** - Error handling component
-
 ## 🧪 Testing Strategy
 
 ### **Testing Approach**
@@ -605,10 +599,6 @@ npm run test:watch    # Run tests in watch mode
 - [ ] Touch targets meet minimum size requirements
 - [ ] Color contrast ratios are WCAG compliant
 
-## 📄 License
-
-This project is developed as an interview assignment demonstration. All code is proprietary and confidential.
-
 ## 🏆 Key Achievements
 
 - ✅ **100% TypeScript Coverage** - Full type safety implementation
@@ -622,7 +612,3 @@ This project is developed as an interview assignment demonstration. All code is 
 - ✅ **WCAG 2.1 AA Compliant** - Full accessibility compliance and inclusive design
 - ✅ **Screen Reader Compatible** - Complete VoiceOver/TalkBack support
 - ✅ **Assistive Technology Ready** - Support for various accessibility tools
-
----
-
-**Built with ❤️ using React Native, TypeScript, and Expo**
