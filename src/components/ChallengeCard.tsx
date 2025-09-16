@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Fonts } from '../constants/colors';
 import { Challenge } from '../types';
+import { VoilaIcon } from './VoilaIcon';
 
 interface ChallengeCardProps {
   challenge: Challenge;
@@ -30,25 +31,26 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
       
       <View style={styles.content}>
         <View style={styles.tagsContainer}>
-          {challenge.tags.map((tag, index) => (
-            <View 
-              key={index} 
-              style={[
-                styles.tag,
-                index === 0 ? styles.rewardTag : styles.freeProductTag
-              ]}
-            >
-              {index === 0 && (
-                <>
-                  <Ionicons name="logo-bitcoin" size={12} color={Colors.textLight} />
-                  <Text style={styles.rewardTagText}>{tag}</Text>
-                </>
-              )}
-              {index === 1 && (
-                <Text style={styles.freeProductTagText}>{tag}</Text>
-              )}
+
+        {challenge.reward && challenge.reward > 0 && (
+            <View style={[styles.tag, styles.rewardTag]}>
+              <Ionicons name="gift" size={12} color={Colors.textLight} />
+              <Text style={styles.rewardTagText}>{challenge.reward}</Text>
             </View>
-          ))}
+          )}
+        
+          {challenge.voila && (
+            <View style={[styles.tag, styles.voilaTag]}>
+              <VoilaIcon size={24} color={Colors.primary} />
+            </View>
+          )}
+          
+          {challenge.offer && (
+            <View style={[styles.tag, styles.offerTag]}>
+              
+              <Text style={styles.offerTagText}>{challenge.offer}</Text>
+            </View>
+          )}
         </View>
         
         <Text style={styles.title}>{challenge.title}</Text>
@@ -144,6 +146,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  voilaTag: {
+    backgroundColor: '#00D6FF',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  offerTag: {
+    backgroundColor: 'white',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: Colors.text,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
   tagText: {
     fontSize: 12,
     fontFamily: Fonts.medium,
@@ -156,6 +178,11 @@ const styles = StyleSheet.create({
   },
   freeProductTagText: {
     color: Colors.text,
+  },
+  offerTagText: {
+    color: Colors.text,
+    fontFamily: Fonts.bold,
+    lineHeight: 12,
   },
   title: {
     fontSize: 18,

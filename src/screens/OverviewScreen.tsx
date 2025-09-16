@@ -15,9 +15,11 @@ const mockChallenges: Challenge[] = [
     description: 'Open the app at least once per week until April 30th, 2025, to earn 2 chips each week.',
     reward: 5,
     tags: ['5', 'voila', 'Free Product Offer'],
+    offer: "Free Product Offer",
     image: '../assets/challenge.png',
     buttonText: 'Start Challenge',
     status: 'active',
+    voila: true,
   },
   {
     id: '2',
@@ -25,9 +27,11 @@ const mockChallenges: Challenge[] = [
     description: 'Fill out your profile information to earn 3 chips and unlock exclusive offers.',
     reward: 3,
     tags: ['3', 'voila', 'Profile'],
+    offer: "Free Product Offer",
     image: '../assets/challenge.png',
     buttonText: 'Complete Now',
     status: 'active',
+    voila: true,
   },
   {
     id: '3',
@@ -35,9 +39,11 @@ const mockChallenges: Challenge[] = [
     description: 'Invite friends to join the app and earn 10 chips for each successful referral.',
     reward: 10,
     tags: ['10', 'voila', 'Referral'],
+    offer: "Free Product Offer",
     image: '../assets/challenge.png',
     buttonText: 'Share Now',
     status: 'active',
+    voila: true,
   },
 ];
 

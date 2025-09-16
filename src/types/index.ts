@@ -8,6 +8,8 @@ export interface Challenge {
   buttonText: string;
   status: 'active' | 'completed' | 'upcoming';
   isDisabled?: boolean;
+  voila?: boolean;
+  offer?: boolean;
 }
 
 export interface Sweepstake {

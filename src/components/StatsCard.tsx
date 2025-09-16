@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Colors, Fonts } from '../constants/colors';
 
@@ -7,15 +7,16 @@ interface StatsCardProps {
   icon: keyof typeof FontAwesome.glyphMap;
   title: string;
   value: string | number;
+  onPress?: () => void;
 }
 
-export const StatsCard: React.FC<StatsCardProps> = ({ icon, title, value }) => {
+export const StatsCard: React.FC<StatsCardProps> = ({ icon, title, value, onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.7}>
       <FontAwesome name={icon} size={24} color={Colors.textLight} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.value}>{value}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

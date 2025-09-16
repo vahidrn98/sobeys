@@ -48,14 +48,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginVertical: 8,
     overflow: 'hidden',
-    elevation: 2,
+    elevation: 1,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 1,
     },
     shadowOpacity: 0.1,
-    shadowRadius: 3.84,
+    shadowRadius: 2,
   },
   header: {
     backgroundColor: Colors.primary,
