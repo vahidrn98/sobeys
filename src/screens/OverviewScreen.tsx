@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { ChallengeCard } from '../components/ChallengeCard';
 import { SweepstakeCard } from '../components/SweepstakeCard';
-import { Colors, Fonts } from '../constants/colors';
 import { useOverview } from '../hooks/useOverview';
+import { styles } from '../styles/screens/OverviewScreen.styles';
 
 export const OverviewScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -78,51 +78,3 @@ export const OverviewScreen: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.background,
-  },
-  scrollView: {
-    flex: 1,
-  },
-  section: {
-    paddingHorizontal: 16,
-    paddingTop: 24,
-    // marginBottom: 24,
-  },
-  sectionHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontFamily: Fonts.titleBold,
-    color: Colors.text,
-  },
-  viewAllText: {
-    fontSize: 16,
-    color: Colors.primary,
-    fontFamily: Fonts.bold,
-  },
-  sectionDescription: {
-    fontSize: 14,
-    fontFamily: Fonts.regular,
-    color: Colors.textSecondary,
-    marginBottom: 16,
-    lineHeight: 20,
-  },
-  challengesScrollView: {
-    marginHorizontal: -16,
-  },
-  challengesScrollContainer: {
-    paddingHorizontal: 16,
-    gap: 16,
-  },
-  challengeCardContainer: {
-    width: 350,
-    paddingBottom: 16,
-  },
-});

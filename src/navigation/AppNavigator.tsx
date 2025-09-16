@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,6 +9,7 @@ import { OverviewScreen } from '../screens/OverviewScreen';
 import { ChallengesScreen } from '../screens/ChallengesScreen';
 import { SweepstakesScreen } from '../screens/SweepstakesScreen';
 import { DashboardScreen } from '../screens/DashboardScreen';
+import { styles } from '../styles/navigation/AppNavigator.styles';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -128,27 +129,3 @@ export const AppNavigator: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.primary,
-  },
-  header: {
-    backgroundColor: Colors.primary,
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontFamily: Fonts.titleBold,
-    color: Colors.textLight,
-  },
-  statsContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    gap: 8,
-    backgroundColor: Colors.background,
-  },
-});
