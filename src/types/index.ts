@@ -23,3 +23,13 @@ export interface UserStats {
   challengesCompleted: number;
   rewards: number;
 }
+
+export interface ScenePlusPoints {
+  points: number;
+  onViewAll?: () => void;
+}
+
+export interface FreeProducts {
+  freeProducts: number;
+  onViewAll?: () => void;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import { ChallengeCard } from '../components/ChallengeCard';
 import { SweepstakeCard } from '../components/SweepstakeCard';
 import { Colors, Fonts } from '../constants/colors';
@@ -16,6 +17,7 @@ const mockChallenges: Challenge[] = [
     tags: ['5', 'voila', 'Free Product Offer'],
     image: '../assets/challenge.png',
     buttonText: 'Start Challenge',
+    status: 'active',
   },
   {
     id: '2',
@@ -25,6 +27,7 @@ const mockChallenges: Challenge[] = [
     tags: ['3', 'voila', 'Profile'],
     image: '../assets/challenge.png',
     buttonText: 'Complete Now',
+    status: 'active',
   },
   {
     id: '3',
@@ -34,6 +37,7 @@ const mockChallenges: Challenge[] = [
     tags: ['10', 'voila', 'Referral'],
     image: '../assets/challenge.png',
     buttonText: 'Share Now',
+    status: 'active',
   },
 ];
 
@@ -46,6 +50,8 @@ const mockSweepstake: Sweepstake = {
 };
 
 export const OverviewScreen: React.FC = () => {
+  const navigation = useNavigation();
+
   const handleChallengePress = () => {
     console.log('Challenge pressed');
   };
@@ -55,11 +61,11 @@ export const OverviewScreen: React.FC = () => {
   };
 
   const handleViewAllChallenges = () => {
-    console.log('View all challenges');
+    navigation.navigate('Challenges' as never);
   };
 
   const handleViewAllSweepstakes = () => {
-    console.log('View all sweepstakes');
+    navigation.navigate('Sweepstakes' as never);
   };
 
   return (
