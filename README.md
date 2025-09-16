@@ -105,6 +105,28 @@ src/
 - **Component-Specific Styles** - Maintainable style organization
 - **Responsive Design** - Adaptive layouts for different screen sizes
 
+## 🎨 Design System
+
+### **Color Palette**
+- **Primary**: `#003D2A` (Dark Green) - Brand identity
+- **Secondary**: `#FFFFFF` (White) - Clean backgrounds
+- **Accent**: `#4A7C59` (Light Green) - Interactive elements
+- **Success**: `#4CAF50` - Positive actions
+- **Warning**: `#FF9800` - Attention required
+- **Error**: `#F44336` - Error states
+
+### **Typography**
+- **Poppins** - Body text and UI elements
+- **Montserrat** - Headings and titles
+- **Consistent Font Weights** - 400, 500, 600, 700
+
+### **Component Library**
+- **ChallengeCard** - Interactive challenge display
+- **CouponCard** - Digital coupon management
+- **StatsCard** - Progress and statistics display
+- **SweepstakeCard** - Contest entry interface
+- **ErrorBoundary** - Error handling component
+
 ## 🛠️ Development Features
 
 ### **Code Quality & Standards**
@@ -231,27 +253,7 @@ npm test              # Run Jest tests
 npm run test:watch    # Run tests in watch mode
 ```
 
-## 🎨 Design System
 
-### **Color Palette**
-- **Primary**: `#003D2A` (Dark Green) - Brand identity
-- **Secondary**: `#FFFFFF` (White) - Clean backgrounds
-- **Accent**: `#4A7C59` (Light Green) - Interactive elements
-- **Success**: `#4CAF50` - Positive actions
-- **Warning**: `#FF9800` - Attention required
-- **Error**: `#F44336` - Error states
-
-### **Typography**
-- **Poppins** - Body text and UI elements
-- **Montserrat** - Headings and titles
-- **Consistent Font Weights** - 400, 500, 600, 700
-
-### **Component Library**
-- **ChallengeCard** - Interactive challenge display
-- **CouponCard** - Digital coupon management
-- **StatsCard** - Progress and statistics display
-- **SweepstakeCard** - Contest entry interface
-- **ErrorBoundary** - Error handling component
 
 
 #### ⚡ **Potential Performance Improvements**
