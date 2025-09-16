@@ -1,19 +1,19 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { Sweepstake } from '../types';
+import { Sweepstake } from '../types/sweepstake';
 import { styles } from '../styles/components/SweepstakeCard.styles';
-
-interface SweepstakeCardProps {
-  sweepstake: Sweepstake;
-  onPress: () => void;
-}
+import { SweepstakeCardProps } from '../types/components';
 
 export const SweepstakeCard: React.FC<SweepstakeCardProps> = ({ sweepstake, onPress }) => {
+  if (!sweepstake) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image 
-          source={require('../assets/Sweep.png')} 
+          source={typeof sweepstake.image === 'number' ? sweepstake.image : { uri: sweepstake.image }} 
           style={styles.image}
           resizeMode="cover"
         />

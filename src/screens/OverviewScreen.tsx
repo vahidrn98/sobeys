@@ -12,6 +12,7 @@ export const OverviewScreen: React.FC = () => {
   const {
     challenges,
     sweepstake,
+    loading,
     handleChallengePress,
     handleSweepstakePress,
     handleViewAllChallenges: hookHandleViewAllChallenges,
@@ -68,10 +69,16 @@ export const OverviewScreen: React.FC = () => {
           <Text style={styles.sectionDescription}>
             Carousel body text lorem ipsum ementum consectetur nulla dignissim.
           </Text>
-          <SweepstakeCard 
-            sweepstake={sweepstake} 
-            onPress={handleSweepstakePress}
-          />
+          {loading ? (
+            <View style={styles.loadingContainer}>
+              <Text style={styles.loadingText}>Loading sweepstakes...</Text>
+            </View>
+          ) : (
+            <SweepstakeCard 
+              sweepstake={sweepstake} 
+              onPress={handleSweepstakePress}
+            />
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>

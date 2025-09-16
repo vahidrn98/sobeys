@@ -1,11 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/components/FreeProductsCard.styles';
-
-interface FreeProductsCardProps {
-  freeProducts: number;
-  onViewAll?: () => void;
-}
+import { FreeProductsCardProps } from '../types/components';
 
 export const FreeProductsCard: React.FC<FreeProductsCardProps> = ({ 
   freeProducts, 

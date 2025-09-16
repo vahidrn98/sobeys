@@ -1,11 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/components/ScenePlusCard.styles';
-
-interface ScenePlusCardProps {
-  points: number;
-  onViewAll?: () => void;
-}
+import { ScenePlusCardProps } from '../types/components';
 
 export const ScenePlusCard: React.FC<ScenePlusCardProps> = ({ 
   points, 

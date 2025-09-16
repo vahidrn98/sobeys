@@ -48,4 +48,17 @@ export const styles = StyleSheet.create({
     width: 350,
     paddingBottom: 16,
   },
+  loadingContainer: {
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.background,
+    borderRadius: 8,
+    marginTop: 8,
+  },
+  loadingText: {
+    fontSize: 14,
+    fontFamily: Fonts.regular,
+    color: Colors.textSecondary,
+  },
 });

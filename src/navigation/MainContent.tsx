@@ -2,6 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createMaterialTopTabNavigator, MaterialTopTabNavigationOptions } from '@react-navigation/material-top-tabs';
+import type { NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../types/navigation';
 import { StatsCard } from '../components/StatsCard';
 import { OverviewScreen } from '../screens/OverviewScreen';
 import { ChallengesScreen } from '../screens/ChallengesScreen';
@@ -13,10 +15,10 @@ import { screenOptions } from '../styles/navigation/screenOptions';
 const Tab = createMaterialTopTabNavigator();
 
 export const MainContent: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const handleRewardsPress = () => {
-    navigation.navigate('Dashboard' as never);
+    navigation.navigate('Dashboard');
   };
 
   return (

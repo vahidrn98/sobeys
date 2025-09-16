@@ -1,64 +1,50 @@
-import { useState, useCallback } from 'react';
-import { Challenge } from '../types';
-
-// Mock data for challenges
-const mockChallenges: Challenge[] = [
-  {
-    id: '1',
-    title: 'Redeem Any Offer In Store',
-    description: 'Earn 5 chips for redeeming any personalized or digital offer in store. It doesn\'t get any better than that.',
-    reward: 5,
-    tags: ['5', 'Free Product Offer'],
-    offer: "Free Product Offer",
-    image: 'challenge.png',
-    buttonText: 'Start Challenge',
-    status: 'active',
-    voila: false,
-  },
-  {
-    id: '2',
-    title: 'Lorem Contest Title',
-    description: 'Earn 5 chips for redeeming any personalized or digital offer in store. It doesn\'t get any better than that.',
-    reward: 10,
-    tags: ['10', 'Free Product Offer'],
-    offer: "Free Product Offer",
-    image: 'challenge.png',
-    buttonText: 'Check Back Next Week',
-    status: 'completed',
-  },
-  {
-    id: '3',
-    title: 'Complete Our Own Brand Trivia for this Week',
-    description: 'Earn 5 chips for redeeming any personalized or digital offer in store. It doesn\'t get any better than that.',
-    reward: 5,
-    tags: ['5', 'Free Product Offer'],
-    offer: "Free Product Offer",
-    image: 'challenge.png',
-    buttonText: 'Check Back Next Week',
-    status: 'upcoming',
-  },
-];
+import { useState, useCallback, useEffect } from 'react';
+import { Challenge } from '../types/challenge';
+import { mockChallenges } from '../data/mockChallenges';
 
 export const useChallenges = () => {
-  const [challenges] = useState<Challenge[]>(mockChallenges);
+  const [challenges, setChallenges] = useState<Challenge[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Simulate API call
+    const loadChallenges = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        // Simulate network delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setChallenges(mockChallenges);
+      } catch (err) {
+        setError('Failed to load challenges');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadChallenges();
+  }, []);
 
   const handleChallengePress = useCallback((challengeId: string) => {
-    console.log('Challenge pressed:', challengeId);
     // In a real app, this would handle navigation or API calls
+    // navigation.navigate('ChallengeDetail', { challengeId });
   }, []);
 
   const handleViewAllChallenges = useCallback(() => {
-    console.log('View all challenges');
     // In a real app, this would navigate to a full challenges list
+    // navigation.navigate('AllChallenges');
   }, []);
 
   const handleViewCompleted = useCallback(() => {
-    console.log('View completed challenges pressed');
     // In a real app, this would navigate to completed challenges
+    // navigation.navigate('CompletedChallenges');
   }, []);
 
   return {
     challenges,
+    loading,
+    error,
     handleChallengePress,
     handleViewAllChallenges,
     handleViewCompleted,

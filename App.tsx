@@ -5,6 +5,7 @@ import { Montserrat_400Regular, Montserrat_500Medium, Montserrat_600SemiBold, Mo
 import * as SplashScreen from 'expo-splash-screen';
 import { AppNavigator } from './src/navigation/AppNavigator';
 import { Colors } from './src/constants/colors';
+import { ErrorBoundary } from './src/components/ErrorBoundary';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -32,10 +33,9 @@ export default function App() {
   }
 
   return (
-    <>
-    <StatusBar style="light" backgroundColor={Colors.primary} />
+    <ErrorBoundary>
+      <StatusBar style="light" backgroundColor={Colors.primary} />
       <AppNavigator />
-      
-    </>
+    </ErrorBoundary>
   );
 }

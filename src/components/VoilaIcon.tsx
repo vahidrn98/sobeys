@@ -1,10 +1,6 @@
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
-
-interface VoilaIconProps {
-  size?: number;
-  color?: string;
-}
+import { VoilaIconProps } from '../types/components';
 
 export const VoilaIcon: React.FC<VoilaIconProps> = ({ 
   size = 12, 

@@ -2,14 +2,10 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/colors';
-import { Challenge } from '../types';
+import { Challenge } from '../types/challenge';
 import { VoilaIcon } from './VoilaIcon';
 import { styles } from '../styles/components/ChallengeCard.styles';
-
-interface ChallengeCardProps {
-  challenge: Challenge;
-  onPress: () => void;
-}
+import { ChallengeCardProps } from '../types/components';
 
 export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress }) => {
   const isDisabled = challenge.isDisabled || challenge.status === 'completed' || challenge.status === 'upcoming';
