@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    borderRadius: 6,
+    borderRadius: 24,
     gap: 6,
   },
   useNowText: {

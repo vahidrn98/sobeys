@@ -1,0 +1,151 @@
+import { StyleSheet } from 'react-native';
+import { Colors, Fonts } from '../../constants/colors';
+
+export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.background,
+    borderRadius: 12,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 1,
+    flex: 1,
+  },
+  imageContainer: {
+    height: 150,
+    backgroundColor: '#F5F5F5',
+    position: 'relative',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+  completedBadge: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    backgroundColor: "#35A131",
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+    borderRadius: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  completedText: {
+    color: 'white',
+    fontSize: 12,
+    fontFamily: Fonts.medium,
+    lineHeight: 12,
+  },
+  content: {
+    padding: 16,
+  },
+  tagsContainer: {
+    flexDirection: 'row',
+    marginBottom: 12,
+    gap: 8,
+  },
+  tag: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  rewardTag: {
+    backgroundColor: Colors.tag,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  freeProductTag: {
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    borderRadius: 6,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  voilaTag: {
+    backgroundColor: '#00D6FF',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  offerTag: {
+    backgroundColor: 'white',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: Colors.text,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  tagText: {
+    fontSize: 12,
+    fontFamily: Fonts.medium,
+  },
+  rewardTagText: {
+    color: Colors.tagText,
+  },
+  voilaTagText: {
+    color: Colors.textLight,
+  },
+  freeProductTagText: {
+    color: Colors.text,
+  },
+  offerTagText: {
+    color: Colors.text,
+    fontFamily: Fonts.bold,
+    lineHeight: 12,
+  },
+  title: {
+    fontSize: 18,
+    fontFamily: Fonts.titleBold,
+    color: Colors.text,
+    marginBottom: 8,
+  },
+  description: {
+    fontSize: 14,
+    fontFamily: Fonts.regular,
+    color: Colors.textSecondary,
+    lineHeight: 20,
+    marginBottom: 16,
+  },
+  button: {
+    backgroundColor: Colors.primary,
+    paddingVertical: 10,
+    paddingHorizontal: 24,
+    borderRadius: 24,
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+  },
+  disabledButton: {
+    backgroundColor: '#E0E0E0',
+  },
+  buttonText: {
+    color: Colors.textLight,
+    fontSize: 16,
+    fontFamily: Fonts.regular,
+  },
+  disabledButtonText: {
+    color: '#9E9E9E',
+  },
+});

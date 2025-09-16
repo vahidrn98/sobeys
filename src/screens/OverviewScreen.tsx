@@ -5,66 +5,18 @@ import { useNavigation } from '@react-navigation/native';
 import { ChallengeCard } from '../components/ChallengeCard';
 import { SweepstakeCard } from '../components/SweepstakeCard';
 import { Colors, Fonts } from '../constants/colors';
-import { Challenge, Sweepstake } from '../types';
-
-// Mock data - in a real app, this would come from an API
-const mockChallenges: Challenge[] = [
-  {
-    id: '1',
-    title: 'Open the mobile app weekly',
-    description: 'Open the app at least once per week until April 30th, 2025, to earn 2 chips each week.',
-    reward: 5,
-    tags: ['5', 'voila', 'Free Product Offer'],
-    offer: "Free Product Offer",
-    image: '../assets/challenge.png',
-    buttonText: 'Start Challenge',
-    status: 'active',
-    voila: true,
-  },
-  {
-    id: '2',
-    title: 'Complete your profile',
-    description: 'Fill out your profile information to earn 3 chips and unlock exclusive offers.',
-    reward: 3,
-    tags: ['3', 'voila', 'Profile'],
-    offer: "Free Product Offer",
-    image: '../assets/challenge.png',
-    buttonText: 'Complete Now',
-    status: 'active',
-    voila: true,
-  },
-  {
-    id: '3',
-    title: 'Share with friends',
-    description: 'Invite friends to join the app and earn 10 chips for each successful referral.',
-    reward: 10,
-    tags: ['10', 'voila', 'Referral'],
-    offer: "Free Product Offer",
-    image: '../assets/challenge.png',
-    buttonText: 'Share Now',
-    status: 'active',
-    voila: true,
-  },
-];
-
-const mockSweepstake: Sweepstake = {
-  id: '1',
-  title: 'Sweepstake Title #1',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  image: '../assets/Sweep.png',
-  buttonText: 'Enter Sweepstake',
-};
+import { useOverview } from '../hooks/useOverview';
 
 export const OverviewScreen: React.FC = () => {
   const navigation = useNavigation();
-
-  const handleChallengePress = () => {
-    console.log('Challenge pressed');
-  };
-
-  const handleSweepstakePress = () => {
-    console.log('Sweepstake pressed');
-  };
+  const {
+    challenges,
+    sweepstake,
+    handleChallengePress,
+    handleSweepstakePress,
+    handleViewAllChallenges: hookHandleViewAllChallenges,
+    handleViewAllSweepstakes: hookHandleViewAllSweepstakes,
+  } = useOverview();
 
   const handleViewAllChallenges = () => {
     navigation.navigate('Challenges' as never);
@@ -94,7 +46,7 @@ export const OverviewScreen: React.FC = () => {
             contentContainerStyle={styles.challengesScrollContainer}
             style={styles.challengesScrollView}
           >
-            {mockChallenges.map((challenge) => (
+            {challenges.map((challenge) => (
               <View key={challenge.id} style={styles.challengeCardContainer}>
                 <ChallengeCard 
                   challenge={challenge} 
@@ -117,7 +69,7 @@ export const OverviewScreen: React.FC = () => {
             Carousel body text lorem ipsum ementum consectetur nulla dignissim.
           </Text>
           <SweepstakeCard 
-            sweepstake={mockSweepstake} 
+            sweepstake={sweepstake} 
             onPress={handleSweepstakePress}
           />
         </View>

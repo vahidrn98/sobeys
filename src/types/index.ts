@@ -9,7 +9,7 @@ export interface Challenge {
   status: 'active' | 'completed' | 'upcoming';
   isDisabled?: boolean;
   voila?: boolean;
-  offer?: boolean;
+  offer?: string;
 }
 
 export interface Sweepstake {

@@ -3,40 +3,14 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Fonts } from '../constants/colors';
 import { SweepstakeCard } from '../components/SweepstakeCard';
-import { Sweepstake } from '../types';
-
-const mockSweepstakes: Sweepstake[] = [
-  {
-  id: '1',
-  title: 'Sweepstake Title #1',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  image: '../assets/Sweep.png',
-  buttonText: 'Enter Sweepstake',
-},
-{
-  id: '2',
-  title: 'Sweepstake Title #2',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  image: '../assets/Sweep.png',
-  buttonText: 'Enter Sweepstake',
-},
-{
-  id: '3',
-  title: 'Sweepstake Title #3',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  image: '../assets/Sweep.png',
-  buttonText: 'Enter Sweepstake',
-},
-];
+import { useSweepstakes } from '../hooks/useSweepstakes';
 
 export const SweepstakesScreen: React.FC = () => {
-  const handleSweepstakePress = () => {
-    console.log('Sweepstake pressed');
-  };
-
-  const handleViewAllSweepstakes = () => {
-    console.log('View all sweepstakes');
-  };
+  const {
+    sweepstakes,
+    handleSweepstakePress,
+    handleViewAllSweepstakes,
+  } = useSweepstakes();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -49,7 +23,7 @@ export const SweepstakesScreen: React.FC = () => {
           <Text style={styles.sectionDescription}>
             Carousel body text lorem ipsum ementum consectetur nulla dignissim.
           </Text>
-          {mockSweepstakes.map((sweepstake) => (
+          {sweepstakes.map((sweepstake) => (
             <SweepstakeCard
               key={sweepstake.id}
               sweepstake={sweepstake} 

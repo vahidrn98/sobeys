@@ -3,58 +3,15 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Fonts } from '../constants/colors';
 import { ChallengeCard } from '../components/ChallengeCard';
-import { Challenge } from '../types';
+import { useChallenges } from '../hooks/useChallenges';
 
 export const ChallengesScreen: React.FC = () => {
-  // Sample challenge data matching the image
-  const challenges: Challenge[] = [
-    {
-      id: '1',
-      title: 'Redeem Any Offer In Store',
-      description: 'Earn 5 chips for redeeming any personalized or digital offer in store. It doesn\'t get any better than that.',
-      reward: 5,
-      tags: ['5', 'Free Product Offer'],
-      offer: "Free Product Offer",
-      image: 'challenge.png',
-      buttonText: 'Start Challenge',
-      status: 'active',
-      voila: false,
-    },
-    {
-      id: '2',
-      title: 'Lorem Contest Title',
-      description: 'get up to 10 chips when you complete the trivia set.',
-      reward: 10,
-      tags: ['10', 'Free Product Offer'],
-      offer: "Free Product Offer",
-      image: 'challenge.png',
-      buttonText: 'Check Back Next Week',
-      status: 'completed',
-    },
-    {
-      id: '3',
-      title: 'Complete Our Own Brand Trivia for this Week',
-      description: 'get up to 10 chips when you complete the trivia set.',
-      reward: 5,
-      tags: ['5', 'Free Product Offer'],
-      offer: "Free Product Offer",
-      image: 'challenge.png',
-      buttonText: 'Check Back Next Week',
-      status: 'upcoming',
-    },
-  ];
-
-  const handleChallengePress = (challengeId: string) => {
-    console.log('Challenge pressed:', challengeId);
-  };
-
-  const handleViewAllChallenges = () => {
-    console.log('View all challenges');
-  };
-
-  const handleViewCompleted = () => {
-    console.log('View completed challenges pressed');
-  };
+  const {
+    challenges,
+    handleChallengePress,
+    handleViewAllChallenges,
+    handleViewCompleted,
+  } = useChallenges();
 
   return (
     <SafeAreaView style={styles.container}>
