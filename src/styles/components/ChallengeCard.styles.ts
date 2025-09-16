@@ -93,7 +93,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 6,
     borderWidth: 1,
-    borderColor: Colors.text,
+    borderColor: "#C4C4C4",
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,

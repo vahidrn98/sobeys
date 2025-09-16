@@ -110,8 +110,8 @@ export const styles = StyleSheet.create({
     gap: 6,
   },
   useNowText: {
-    fontSize: 14,
-    fontFamily: Fonts.medium,
+    fontSize: 12,
+    fontFamily: Fonts.regular,
     color: '#FFFFFF',
     fontWeight: '500',
     lineHeight: 14,

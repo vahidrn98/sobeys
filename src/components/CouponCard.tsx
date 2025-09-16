@@ -118,7 +118,7 @@ export const CouponCard: React.FC<CouponCardProps> = ({
         accessibilityLabel="Use coupon on Voila"
         accessibilityHint="Double tap to open Voila app and use this coupon"
       >
-        <ExternalLinkIcon size={20} color="#FFFFFF" />
+        <ExternalLinkIcon size={16} color="#FFFFFF" />
         <Text style={styles.useNowText}>Use Now on Voila</Text>
       </TouchableOpacity>
     </View>

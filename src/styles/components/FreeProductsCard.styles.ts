@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   viewAllText: {
-    fontSize: 16,
+    fontSize: 12,
     fontFamily: Fonts.regular,
     color: Colors.textLight,
   },
