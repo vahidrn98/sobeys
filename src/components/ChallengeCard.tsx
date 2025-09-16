@@ -35,8 +35,9 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
 
         {challenge.reward && challenge.reward > 0 && (
             <View style={[styles.tag, styles.rewardTag]}>
-              <Ionicons name="gift" size={12} color={Colors.textLight} />
               <Text style={styles.rewardTagText}>{challenge.reward}</Text>
+              <Ionicons name="cash" size={12} color={Colors.textLight} />
+              
             </View>
           )}
         

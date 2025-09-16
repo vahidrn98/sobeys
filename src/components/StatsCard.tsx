@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/colors';
 import { styles } from '../styles/components/StatsCard.styles';
 
 interface StatsCardProps {
-  icon: keyof typeof FontAwesome.glyphMap;
+  icon: keyof typeof Ionicons.glyphMap;
   title: string;
   value: string | number;
   onPress?: () => void;
@@ -14,7 +14,7 @@ interface StatsCardProps {
 export const StatsCard: React.FC<StatsCardProps> = ({ icon, title, value, onPress }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.7}>
-      <FontAwesome name={icon} size={24} color={Colors.textLight} />
+      <Ionicons name={icon} size={24} color={Colors.textLight} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.value}>{value}</Text>
     </TouchableOpacity>
