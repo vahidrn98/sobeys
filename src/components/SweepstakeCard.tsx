@@ -9,21 +9,46 @@ export const SweepstakeCard: React.FC<SweepstakeCardProps> = ({ sweepstake, onPr
     return null;
   }
 
+  const getAccessibilityLabel = () => {
+    return `Sweepstake: ${sweepstake.title}. ${sweepstake.description}`;
+  };
+
   return (
-    <View style={styles.container}>
+    <View 
+      style={styles.container}
+      accessibilityRole="none"
+      accessibilityLabel={getAccessibilityLabel()}
+    >
       <View style={styles.imageContainer}>
         <Image 
           source={typeof sweepstake.image === 'number' ? sweepstake.image : { uri: sweepstake.image }} 
           style={styles.image}
           resizeMode="cover"
+          accessibilityLabel={`Sweepstake image for ${sweepstake.title}`}
         />
       </View>
       
       <View style={styles.content}>
-        <Text style={styles.title}>{sweepstake.title}</Text>
-        <Text style={styles.description}>{sweepstake.description}</Text>
+        <Text 
+          style={styles.title}
+          accessibilityRole="header"
+        >
+          {sweepstake.title}
+        </Text>
+        <Text 
+          style={styles.description}
+          accessibilityRole="text"
+        >
+          {sweepstake.description}
+        </Text>
         
-        <TouchableOpacity style={styles.button} onPress={onPress}>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={onPress}
+          accessibilityRole="button"
+          accessibilityLabel={sweepstake.buttonText}
+          accessibilityHint="Double tap to enter this sweepstake"
+        >
           <Text style={styles.buttonText}>{sweepstake.buttonText}</Text>
         </TouchableOpacity>
       </View>

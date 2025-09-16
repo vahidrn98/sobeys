@@ -29,12 +29,30 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       }
 
       return (
-        <View style={styles.container}>
-          <Text style={styles.title}>Something went wrong</Text>
-          <Text style={styles.message}>
+        <View 
+          style={styles.container}
+          accessibilityRole="alert"
+          accessibilityLabel="Error occurred"
+        >
+          <Text 
+            style={styles.title}
+            accessibilityRole="header"
+          >
+            Something went wrong
+          </Text>
+          <Text 
+            style={styles.message}
+            accessibilityRole="text"
+          >
             We're sorry, but something unexpected happened. Please try again.
           </Text>
-          <TouchableOpacity style={styles.button} onPress={this.handleRetry}>
+          <TouchableOpacity 
+            style={styles.button} 
+            onPress={this.handleRetry}
+            accessibilityRole="button"
+            accessibilityLabel="Try again"
+            accessibilityHint="Double tap to retry and reload the application"
+          >
             <Text style={styles.buttonText}>Try Again</Text>
           </TouchableOpacity>
         </View>

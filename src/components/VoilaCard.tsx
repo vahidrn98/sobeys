@@ -17,18 +17,38 @@ export const VoilaCard: React.FC<VoilaCardProps> = ({
   onUseCoupon,
   onCopyCode,
 }) => {
+  const getAccessibilityLabel = () => {
+    return `Voila Free Delivery Coupons. ${coupons.length} vouchers available. Swipe horizontally to view all coupons.`;
+  };
 
   return (
-    <View style={styles.container}>
+    <View 
+      style={styles.container}
+      accessibilityRole="none"
+      accessibilityLabel={getAccessibilityLabel()}
+    >
       {/* Cyan Header */}
       <View style={styles.header}>
-        <VoilaIcon size={100} color="#003D2A" />
+        <VoilaIcon 
+          size={100} 
+          color="#003D2A"
+        />
       </View>
 
       {/* White Content Area */}
       <View style={styles.content}>
-        <Text style={styles.title}>Voila Free Delivery Coupons</Text>
-        <Text style={styles.subtitle}>{coupons.length} vouchers available</Text>
+        <Text 
+          style={styles.title}
+          accessibilityRole="header"
+        >
+          Voila Free Delivery Coupons
+        </Text>
+        <Text 
+          style={styles.subtitle}
+          accessibilityRole="text"
+        >
+          {coupons.length} vouchers available
+        </Text>
 
         {/* Coupon Carousel */}
         <ScrollView
@@ -39,6 +59,9 @@ export const VoilaCard: React.FC<VoilaCardProps> = ({
           decelerationRate="fast"
           snapToInterval={cardWidth + 16}
           snapToAlignment="start"
+          accessibilityRole="scrollbar"
+          accessibilityLabel="Coupon carousel"
+          accessibilityHint="Swipe left or right to view more coupons"
         >
           {coupons.map((coupon) => (
             <CouponCard

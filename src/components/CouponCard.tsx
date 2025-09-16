@@ -38,18 +38,34 @@ export const CouponCard: React.FC<CouponCardProps> = ({
     }
   };
 
+  const getAccessibilityLabel = () => {
+    return `Coupon ${coupon.code}, valid until ${coupon.validUntil}, earned from ${coupon.earnedFrom}, status ${coupon.status}`;
+  };
+
   return (
-    <View style={styles.couponCard}>
+    <View 
+      style={styles.couponCard}
+      accessibilityRole="none"
+      accessibilityLabel={getAccessibilityLabel()}
+    >
       {/* Validity and Status Row */}
       <View style={styles.couponHeader}>
-        <View style={styles.validityContainer}>
+        <View 
+          style={styles.validityContainer}
+          accessibilityRole="text"
+          accessibilityLabel={`Valid until ${coupon.validUntil}`}
+        >
           <CalendarIcon size={20} color="#000000" />
           <Text style={styles.validityText}>Valid until {coupon.validUntil}</Text>
         </View>
-        <View style={[styles.statusBadge, { 
-          borderColor: getStatusColor(coupon.status),
-          backgroundColor: 'transparent'
-        }]}>
+        <View 
+          style={[styles.statusBadge, { 
+            borderColor: getStatusColor(coupon.status),
+            backgroundColor: 'transparent'
+          }]}
+          accessibilityRole="text"
+          accessibilityLabel={`Status: ${coupon.status}`}
+        >
           <Text style={[styles.statusText, { color: getStatusColor(coupon.status) }]}>Active</Text>
         </View>
       </View>
@@ -57,12 +73,26 @@ export const CouponCard: React.FC<CouponCardProps> = ({
       {/* Coupon Code Section */}
       <View style={styles.couponCodeContainer}>
         <View style={styles.couponCodeBox}>
-          <Text style={styles.couponCodeLabel}>Coupon Code</Text>
+          <Text 
+            style={styles.couponCodeLabel}
+            accessibilityRole="text"
+          >
+            Coupon Code
+          </Text>
           <View style={styles.codeRow}>
-            <Text style={styles.couponCode}>{coupon.code}</Text>
+            <Text 
+              style={styles.couponCode}
+              accessibilityRole="text"
+              accessibilityLabel={`Coupon code: ${coupon.code}`}
+            >
+              {coupon.code}
+            </Text>
             <TouchableOpacity
               style={styles.copyButton}
               onPress={() => handleCopyCode(coupon.code)}
+              accessibilityRole="button"
+              accessibilityLabel="Copy coupon code"
+              accessibilityHint="Double tap to copy the coupon code to clipboard"
             >
               <CopyIcon size={12} color="#666666" />
               <Text style={styles.copyText}>Copy</Text>
@@ -72,12 +102,21 @@ export const CouponCard: React.FC<CouponCardProps> = ({
       </View>
 
       {/* Earning Method */}
-      <Text style={styles.earnedFrom}>Earned from '{coupon.earnedFrom}'</Text>
+      <Text 
+        style={styles.earnedFrom}
+        accessibilityRole="text"
+        accessibilityLabel={`Earned from ${coupon.earnedFrom}`}
+      >
+        Earned from '{coupon.earnedFrom}'
+      </Text>
 
       {/* Use Now Button */}
       <TouchableOpacity
         style={styles.useNowButton}
         onPress={() => handleUseCoupon(coupon)}
+        accessibilityRole="button"
+        accessibilityLabel="Use coupon on Voila"
+        accessibilityHint="Double tap to open Voila app and use this coupon"
       >
         <ExternalLinkIcon size={20} color="#FFFFFF" />
         <Text style={styles.useNowText}>Use Now on Voila</Text>

@@ -4,7 +4,7 @@ import { Sweepstake } from '../types/sweepstake';
 import { mockOverviewChallenges } from '../data/mockChallenges';
 import { mockSweepstake } from '../data/mockSweepstakes';
 
-export const useOverview = () => {
+export const useOverview = (navigation?: any) => {
   const [challenges, setChallenges] = useState<Challenge[]>([]);
   const [sweepstake, setSweepstake] = useState<Sweepstake | null>(null);
   const [loading, setLoading] = useState(true);
@@ -31,14 +31,18 @@ export const useOverview = () => {
   }, []);
 
   const handleChallengePress = useCallback(() => {
-    // In a real app, this would handle navigation or API calls
-    // navigation.navigate('ChallengeDetail');
-  }, []);
+    // Navigate to Challenges screen when challenge card button is pressed
+    if (navigation) {
+      navigation.navigate('Challenges');
+    }
+  }, [navigation]);
 
   const handleSweepstakePress = useCallback(() => {
-    // In a real app, this would handle navigation or API calls
-    // navigation.navigate('SweepstakeDetail');
-  }, []);
+    // Navigate to Sweepstakes screen when sweepstake card button is pressed
+    if (navigation) {
+      navigation.navigate('Sweepstakes');
+    }
+  }, [navigation]);
 
   const handleViewAllChallenges = useCallback(() => {
     // In a real app, this would navigate to challenges screen

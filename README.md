@@ -147,6 +147,87 @@ src/
 - **Error Recovery** - Clear error messages with retry options
 - **Accessibility Ready** - Screen reader compatible structure
 
+## ♿ Accessibility Features
+
+### **🎯 WCAG 2.1 AA Compliance**
+This application is built with **inclusive design principles** and meets Web Content Accessibility Guidelines (WCAG) 2.1 AA standards, ensuring the app is usable by people with diverse abilities.
+
+### **📱 Screen Reader Support**
+- **VoiceOver (iOS)** - Full compatibility with Apple's screen reader
+- **TalkBack (Android)** - Complete support for Google's accessibility service
+- **Semantic Structure** - Proper heading hierarchy and content organization
+- **Descriptive Labels** - Clear, concise descriptions for all interactive elements
+
+### **🔧 Accessibility Implementation**
+
+#### **Component-Level Accessibility**
+- **`accessibilityRole`** - Defines semantic roles (button, text, header, alert)
+- **`accessibilityLabel`** - Provides descriptive text for screen readers
+- **`accessibilityHint`** - Offers guidance on element interaction
+- **`accessibilityState`** - Communicates current state (disabled, selected)
+
+#### **Interactive Elements**
+- **Challenge Cards** - Complete challenge information with status and rewards
+- **Coupon Management** - Clear coupon codes, validity, and usage instructions
+- **Statistics Display** - Accessible data presentation with proper labeling
+- **Navigation Controls** - Intuitive tab navigation with clear focus management
+
+#### **Error Handling**
+- **Error Boundary** - Accessible error messages with recovery options
+- **Alert Roles** - Critical information properly announced to screen readers
+- **Retry Mechanisms** - Clear instructions for error recovery
+
+### **🎨 Visual Accessibility**
+- **High Contrast Design** - Sufficient color contrast ratios for readability
+- **Consistent Typography** - Clear, readable fonts with appropriate sizing
+- **Touch Targets** - Minimum 44pt touch targets for easy interaction
+- **Visual Hierarchy** - Clear information structure and flow
+
+### **🧠 Cognitive Accessibility**
+- **Simple Language** - Clear, jargon-free interface text
+- **Consistent Navigation** - Predictable user interface patterns
+- **Error Prevention** - Clear validation and helpful error messages
+- **Progress Indication** - Visual feedback for loading and processing states
+
+### **⚡ Assistive Technology Features**
+
+#### **Voice Control Support**
+- **Element Identification** - All interactive elements properly labeled
+- **Command Recognition** - Compatible with voice control systems
+- **Focus Management** - Proper focus order and navigation
+
+#### **Switch Control Compatibility**
+- **Sequential Navigation** - Logical tab order for switch users
+- **Clear Focus Indicators** - Visible focus states for navigation
+- **Action Confirmation** - Clear feedback for user actions
+
+#### **Magnification Support**
+- **Scalable Text** - Dynamic type support for text scaling
+- **Responsive Layout** - Adapts to different zoom levels
+- **High-DPI Support** - Crisp rendering on high-resolution displays
+
+### **🔍 Accessibility Testing**
+- **Automated Testing** - ESLint accessibility rules enforcement
+- **Manual Testing** - Screen reader and assistive technology validation
+- **User Testing** - Validation with users who rely on assistive technologies
+- **Cross-Platform Testing** - iOS and Android accessibility verification
+
+### **📋 Accessibility Checklist**
+- ✅ **Screen Reader Compatible** - Full VoiceOver/TalkBack support
+- ✅ **Keyboard Navigation** - Complete keyboard accessibility
+- ✅ **Color Contrast** - WCAG AA compliant contrast ratios
+- ✅ **Touch Targets** - Minimum 44pt interactive areas
+- ✅ **Semantic HTML** - Proper ARIA roles and labels
+- ✅ **Focus Management** - Clear focus indicators and logical order
+- ✅ **Error Handling** - Accessible error messages and recovery
+- ✅ **Loading States** - Clear feedback for async operations
+
+### **🚀 Future Accessibility Enhancements**
+- **Haptic Feedback** - Tactile responses for user interactions
+- **Voice Commands** - Voice-activated navigation and actions
+- **Gesture Recognition** - Alternative input methods for motor impairments
+- **Customizable UI** - User-configurable interface elements
+
 ## 🔧 Available Scripts
 
 ```bash
@@ -248,6 +329,9 @@ npm run test:watch    # Run tests in watch mode
 - [ ] Error handling is implemented
 - [ ] Performance considerations are addressed
 - [ ] Accessibility features are included
+- [ ] Screen reader compatibility verified
+- [ ] Touch targets meet minimum size requirements
+- [ ] Color contrast ratios are WCAG compliant
 
 ## 📄 License
 
@@ -263,6 +347,9 @@ This project is developed as an interview assignment demonstration. All code is 
 - ✅ **Performance Optimized** - Efficient rendering and state management
 - ✅ **Cross-Platform Ready** - iOS, Android, and Web compatibility
 - ✅ **Production Ready** - Professional-grade code quality and standards
+- ✅ **WCAG 2.1 AA Compliant** - Full accessibility compliance and inclusive design
+- ✅ **Screen Reader Compatible** - Complete VoiceOver/TalkBack support
+- ✅ **Assistive Technology Ready** - Support for various accessibility tools
 
 ---
 

@@ -17,7 +17,7 @@ export const OverviewScreen: React.FC = () => {
     handleSweepstakePress,
     handleViewAllChallenges: hookHandleViewAllChallenges,
     handleViewAllSweepstakes: hookHandleViewAllSweepstakes,
-  } = useOverview();
+  } = useOverview(navigation);
 
   const handleViewAllChallenges = () => {
     navigation.navigate('Challenges' as never);
