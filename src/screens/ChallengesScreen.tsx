@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChallengeCard } from '../components/ChallengeCard';
 import { useChallenges } from '../hooks/useChallenges';
@@ -9,10 +9,14 @@ export const ChallengesScreen: React.FC = () => {
   const {
     challenges,
     loading,
+    searchQuery,
     handleChallengePress,
     handleViewAllChallenges,
     handleViewCompleted,
+    handleSearchChange,
   } = useChallenges();
+
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   const renderChallengeCards = () => {
     if (loading) {
@@ -41,6 +45,24 @@ export const ChallengesScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        {/* Search Input */}
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={[
+              styles.searchInput,
+              isSearchFocused && styles.searchInputFocused
+            ]}
+            placeholder="Search challenges..."
+            placeholderTextColor="#9E9E9E"
+            value={searchQuery}
+            onChangeText={handleSearchChange}
+            onFocus={() => setIsSearchFocused(true)}
+            onBlur={() => setIsSearchFocused(false)}
+            returnKeyType="search"
+            clearButtonMode="while-editing"
+          />
+        </View>
+
         {/* Weekly Challenges Section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>

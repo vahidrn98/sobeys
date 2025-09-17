@@ -9,6 +9,26 @@ export const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
   },
+  searchContainer: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 8,
+  },
+  searchInput: {
+    backgroundColor: '#F5F5F5',
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    fontSize: 16,
+    fontFamily: Fonts.regular,
+    color: Colors.text,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  searchInputFocused: {
+    borderColor: Colors.primary,
+    backgroundColor: '#FFFFFF',
+  },
   section: {
     paddingHorizontal: 16,
     paddingTop: 24,
