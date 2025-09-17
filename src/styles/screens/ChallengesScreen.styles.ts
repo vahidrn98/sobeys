@@ -70,5 +70,6 @@ export const styles = StyleSheet.create({
     color: Colors.textLight,
     fontSize: 16,
     fontFamily: Fonts.regular,
+    textAlign: "center"
   },
 });
