@@ -27,6 +27,30 @@ export const OverviewScreen: React.FC = () => {
     navigation.navigate('Sweepstakes' as never);
   };
 
+  const renderChallengeCards = () => {
+    if (loading) {
+      // Show skeleton cards while loading
+      return Array.from({ length: 3 }).map((_, index) => (
+        <View key={`skeleton-${index}`} style={styles.challengeCardContainer}>
+          <ChallengeCard
+            challenge={{} as any}
+            onPress={() => {}}
+            isLoading={true}
+          />
+        </View>
+      ));
+    }
+
+    return challenges.map((challenge) => (
+      <View key={challenge.id} style={styles.challengeCardContainer}>
+        <ChallengeCard 
+          challenge={challenge} 
+          onPress={handleChallengePress}
+        />
+      </View>
+    ));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -47,14 +71,7 @@ export const OverviewScreen: React.FC = () => {
             contentContainerStyle={styles.challengesScrollContainer}
             style={styles.challengesScrollView}
           >
-            {challenges.map((challenge) => (
-              <View key={challenge.id} style={styles.challengeCardContainer}>
-                <ChallengeCard 
-                  challenge={challenge} 
-                  onPress={handleChallengePress}
-                />
-              </View>
-            ))}
+            {renderChallengeCards()}
           </ScrollView>
         </View>
 

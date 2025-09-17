@@ -8,10 +8,35 @@ import { styles } from '../styles/screens/ChallengesScreen.styles';
 export const ChallengesScreen: React.FC = () => {
   const {
     challenges,
+    loading,
     handleChallengePress,
     handleViewAllChallenges,
     handleViewCompleted,
   } = useChallenges();
+
+  const renderChallengeCards = () => {
+    if (loading) {
+      // Show skeleton cards while loading
+      return Array.from({ length: 3 }).map((_, index) => (
+        <View key={`skeleton-${index}`} style={styles.challengeCardWrapper}>
+          <ChallengeCard
+            challenge={{} as any}
+            onPress={() => {}}
+            isLoading={true}
+          />
+        </View>
+      ));
+    }
+
+    return challenges.map((challenge) => (
+      <View key={challenge.id} style={styles.challengeCardWrapper}>
+        <ChallengeCard
+          challenge={challenge}
+          onPress={() => handleChallengePress(challenge.id)}
+        />
+      </View>
+    ));
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -32,14 +57,7 @@ export const ChallengesScreen: React.FC = () => {
             contentContainerStyle={styles.challengesScrollContainer}
             style={styles.challengesScrollView}
           >
-            {challenges.map((challenge) => (
-              <View key={challenge.id} style={styles.challengeCardWrapper}>
-                <ChallengeCard
-                  challenge={challenge}
-                  onPress={() => handleChallengePress(challenge.id)}
-                />
-              </View>
-            ))}
+            {renderChallengeCards()}
           </ScrollView>
           
         </View>
@@ -60,14 +78,7 @@ export const ChallengesScreen: React.FC = () => {
             contentContainerStyle={styles.challengesScrollContainer}
             style={styles.challengesScrollView}
           >
-            {challenges.map((challenge) => (
-              <View key={challenge.id} style={styles.challengeCardWrapper}>
-                <ChallengeCard
-                  challenge={challenge}
-                  onPress={() => handleChallengePress(challenge.id)}
-                />
-              </View>
-            ))}
+            {renderChallengeCards()}
           </ScrollView>
           
           
@@ -88,14 +99,7 @@ export const ChallengesScreen: React.FC = () => {
             contentContainerStyle={styles.challengesScrollContainer}
             style={styles.challengesScrollView}
           >
-            {challenges.map((challenge) => (
-              <View key={challenge.id} style={styles.challengeCardWrapper}>
-                <ChallengeCard
-                  challenge={challenge}
-                  onPress={() => handleChallengePress(challenge.id)}
-                />
-              </View>
-            ))}
+            {renderChallengeCards()}
           </ScrollView>
           
         </View>
@@ -110,4 +114,3 @@ export const ChallengesScreen: React.FC = () => {
     </SafeAreaView>
   );
 };
-

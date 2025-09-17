@@ -4,13 +4,20 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/colors';
 import { Challenge } from '../types/challenge';
 import { VoilaIcon } from './VoilaIcon';
+import { SkeletonCard } from './SkeletonCard';
 import { styles } from '../styles/components/ChallengeCard.styles';
 import { ChallengeCardProps } from '../types/components';
 
-export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress }) => {
-  const isDisabled = challenge.isDisabled || challenge.status === 'completed' || challenge.status === 'upcoming';
+export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress, isLoading }) => {
+  // Show skeleton loading state
+  if (isLoading) {
+    return <SkeletonCard />;
+  }
+
+  const isDisabled = challenge?.isDisabled || challenge?.status === 'completed' || challenge?.status === 'upcoming';
   
   const getAccessibilityLabel = () => {
+    if (!challenge) return '';
     const status = challenge.status === 'completed' ? 'completed' : 
                    challenge.status === 'upcoming' ? 'upcoming' : 'active';
     const reward = challenge.reward ? `, reward ${challenge.reward} chips` : '';
@@ -19,6 +26,7 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
   };
 
   const getAccessibilityHint = () => {
+    if (!challenge) return '';
     if (isDisabled) {
       return challenge.status === 'completed' ? 'Challenge already completed' : 
              challenge.status === 'upcoming' ? 'Challenge not yet available' : 'Challenge is disabled';
@@ -37,9 +45,9 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
           source={require('../assets/challenge.png')} 
           style={styles.image}
           resizeMode="cover"
-          accessibilityLabel={`Challenge image for ${challenge.title}`}
+          accessibilityLabel={`Challenge image for ${challenge?.title || ''}`}
         />
-        {challenge.status === 'completed' && (
+        {challenge?.status === 'completed' && (
           <View 
             style={styles.completedBadge}
             accessibilityRole="text"
@@ -54,7 +62,7 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
       <View style={styles.content}>
         <View style={styles.tagsContainer}>
 
-        {challenge.reward && challenge.reward > 0 && (
+        {challenge?.reward && challenge.reward > 0 && (
             <View 
               style={[styles.tag, styles.rewardTag]}
               accessibilityRole="text"
@@ -66,7 +74,7 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
             </View>
           )}
         
-          {challenge.voila && (
+          {challenge?.voila && (
             <View 
               style={[styles.tag, styles.voilaTag]}
               accessibilityRole="text"
@@ -76,7 +84,7 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
             </View>
           )}
           
-          {challenge.offer && (
+          {challenge?.offer && (
             <View 
               style={[styles.tag, styles.offerTag]}
               accessibilityRole="text"
@@ -92,13 +100,13 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
           style={styles.title}
           accessibilityRole="header"
         >
-          {challenge.title}
+          {challenge?.title || ''}
         </Text>
         <Text 
           style={styles.description}
           accessibilityRole="text"
         >
-          {challenge.description}
+          {challenge?.description || ''}
         </Text>
         
         <TouchableOpacity 
@@ -106,12 +114,12 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onPress
           onPress={onPress}
           disabled={isDisabled}
           accessibilityRole="button"
-          accessibilityLabel={challenge.buttonText}
+          accessibilityLabel={challenge?.buttonText || ''}
           accessibilityHint={getAccessibilityHint()}
           accessibilityState={{ disabled: isDisabled }}
         >
           <Text style={[styles.buttonText, isDisabled && styles.disabledButtonText]}>
-            {challenge.buttonText}
+            {challenge?.buttonText || ''}
           </Text>
         </TouchableOpacity>
       </View>

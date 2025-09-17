@@ -37,8 +37,9 @@ export interface SweepstakeCardProps {
 
 // ChallengeCard component interface
 export interface ChallengeCardProps {
-  challenge: Challenge;
+  challenge?: Challenge;
   onPress: () => void;
+  isLoading?: boolean;
 }
 
 // StatsCard component interface
